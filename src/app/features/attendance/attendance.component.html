@@ -1,0 +1,83 @@
+<div class="schooltec-module-container">
+    <header class="module-header-row">
+        <div class="header-info">
+            <h1>Attendance Tracking</h1>
+            <p>Monitor academic engagement and presence across all courses.</p>
+        </div>
+    </header>
+
+    <!-- Attendance Summary Section -->
+    <section class="attendance-summary-grid">
+        <div class="schooltec-card summary-card-modern">
+            <div class="summary-visual">
+                <div class="progress-ring-minimal">
+                    <svg viewBox="0 0 36 36" class="circular-chart blue">
+                        <path class="circle-bg"
+                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        <path class="circle" stroke-dasharray="85, 100"
+                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    </svg>
+                    <span class="perc-text">85%</span>
+                </div>
+            </div>
+            <div class="summary-content-alt">
+                <h3>Overall Presence</h3>
+                <p>128 sessions attended of 150 total</p>
+                <div class="trend-label up"><i class="fas fa-caret-up"></i> 2.4% from last month</div>
+            </div>
+        </div>
+
+        <div class="schooltec-card mini-stat-card"
+            *ngFor="let s of [ {l:'Late Arrivals', v:'4', i:'fa-clock', c:'#f59e0b'}, {l:'Excused Absences', v:'2', i:'fa-user-clock', c:'#10b981'}]">
+            <div class="mini-icon" [style.background-color]="s.c + '15'" [style.color]="s.c">
+                <i class="fas" [class]="s.i"></i>
+            </div>
+            <div class="mini-details">
+                <span class="mlabel">{{ s.l }}</span>
+                <span class="mvalue">{{ s.v }}</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Attendance Table -->
+    <section class="schooltec-card table-section-modern">
+        <table class="schooltec-table">
+            <thead>
+                <tr>
+                    <th>Subject / Module</th>
+                    <th>Engaged Sessions</th>
+                    <th>Engagement Level</th>
+                    <th>Compliance Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of attendance">
+                    <td><strong class="subject-name">{{ item.subject }}</strong></td>
+                    <td>
+                        <div class="session-counter">
+                            <span class="val-p">{{ item.present }}</span>
+                            <span class="val-sep">/</span>
+                            <span class="val-t">{{ item.total }}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="linear-progress-box">
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" [style.width.%]="item.percentage"></div>
+                            </div>
+                            <span class="progress-label">{{ item.percentage }}%</span>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="status-chip" [class.danger]="item.percentage < 75"
+                            [class.success]="item.percentage >= 75">
+                            <i class="fas" [class.fa-check-circle]="item.percentage >= 75"
+                                [class.fa-exclamation-triangle]="item.percentage < 75"></i>
+                            {{ item.percentage >= 75 ? 'Compliant' : 'Shortage' }}
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>

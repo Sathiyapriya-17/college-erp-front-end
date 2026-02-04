@@ -1,0 +1,82 @@
+<div class="schooltec-module-container">
+    <header class="module-header-row">
+        <div class="header-info">
+            <h1>Finance & Payments</h1>
+            <p>Seamless management and tracking of academic financial commitments.</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn-schooltec primary">
+                <i class="fas fa-credit-card"></i> Online Payment
+            </button>
+            <button class="btn-schooltec secondary">
+                <i class="fas fa-history"></i> History
+            </button>
+        </div>
+    </header>
+
+    <!-- Financial Summary Section -->
+    <section class="fees-summary-grid">
+        <div class="schooltec-card fee-summary-card">
+            <div class="fee-icon blue"><i class="fas fa-wallet"></i></div>
+            <div class="fee-data">
+                <span class="f-label">Total Fee Amount</span>
+                <h3 class="f-value">${{ totalAmount }}</h3>
+            </div>
+        </div>
+
+        <div class="schooltec-card fee-summary-card">
+            <div class="fee-icon green"><i class="fas fa-check-circle"></i></div>
+            <div class="fee-data">
+                <span class="f-label">Total Paid</span>
+                <h3 class="f-value">${{ totalPaid }}</h3>
+            </div>
+        </div>
+
+        <div class="schooltec-card fee-summary-card highlighting">
+            <div class="fee-icon red"><i class="fas fa-exclamation-triangle"></i></div>
+            <div class="fee-data">
+                <span class="f-label">Balance Due</span>
+                <h3 class="f-value text-danger">${{ totalAmount - totalPaid }}</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transactions Table Section -->
+    <section class="schooltec-card table-section-modern">
+        <div class="table-header-alt">
+            <h3>Transaction History</h3>
+        </div>
+        <table class="schooltec-table">
+            <thead>
+                <tr>
+                    <th>Transaction Type</th>
+                    <th>Amount</th>
+                    <th>Paid</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fee of feeDetails">
+                    <td><strong class="transaction-type">{{ fee.type }}</strong></td>
+                    <td><span class="currency-text">${{ fee.amount }}</span></td>
+                    <td><span class="currency-text paid">${{ fee.paid }}</span></td>
+                    <td class="date-text">{{ fee.date }}</td>
+                    <td>
+                        <span class="status-pill-finance" [attr.data-status]="fee.status">
+                            {{ fee.status }}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="action-row-finance">
+                            <button class="btn-schooltec-sm primary" *ngIf="fee.status !== 'Paid'">Pay Now</button>
+                            <button class="icon-btn-schooltec" *ngIf="fee.status === 'Paid'"><i
+                                    class="fas fa-file-download"></i></button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>

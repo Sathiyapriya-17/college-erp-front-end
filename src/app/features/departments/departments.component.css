@@ -1,0 +1,142 @@
+.module-wrapper {
+    animation: slideIn 0.6s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.module-header {
+    margin-bottom: 40px;
+}
+
+.module-header h2 {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+}
+
+.dept-creative-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.dept-glass-card {
+    padding: 35px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.dept-floating-icon {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 7rem;
+    opacity: 0.03;
+    color: white;
+    transform: rotate(-10deg);
+}
+
+.dept-header-adv {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.dept-icon-box {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: var(--primary);
+}
+
+.dept-header-adv h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.dept-leadership {
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    border-radius: 16px;
+}
+
+.dept-leadership .label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.dept-leadership p {
+    margin: 5px 0 0 0;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.dept-stats-adv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.stat-item i {
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 5px;
+    opacity: 0.8;
+}
+
+.stat-item .val {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.stat-item .lab {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.dept-footer-adv .btn-adv {
+    width: 100%;
+    padding: 12px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.dept-footer-adv .btn-adv:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    transform: translateY(-3px);
+}

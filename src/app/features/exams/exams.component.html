@@ -1,0 +1,73 @@
+<div class="schooltec-module-container">
+    <header class="module-header-row">
+        <div class="header-info">
+            <h1>Academic Performance</h1>
+            <p>Detailed analysis of examination results and grading history.</p>
+        </div>
+    </header>
+
+    <!-- Performance Summary Cards -->
+    <section class="performance-summary-grid">
+        <div class="schooltec-card gpa-card-modern">
+            <div class="gpa-visual">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="gpa-details">
+                <span class="gpa-label">Current GPA</span>
+                <h2 class="gpa-value">{{ gpa }}</h2>
+            </div>
+            <div class="gpa-trend"><i class="fas fa-arrow-up"></i> 0.2</div>
+        </div>
+
+        <div class="schooltec-card gpa-card-modern secondary">
+            <div class="gpa-visual">
+                <i class="fas fa-award"></i>
+            </div>
+            <div class="gpa-details">
+                <span class="gpa-label">Cumulative CGPA</span>
+                <h2 class="gpa-value">{{ cgpa }}</h2>
+            </div>
+        </div>
+
+        <!-- Quick Insights -->
+        <div class="schooltec-card insight-card">
+            <div class="insight-header">
+                <i class="fas fa-chart-line"></i>
+                <span>Rank</span>
+            </div>
+            <h3>Top 5%</h3>
+            <p>of Department</p>
+        </div>
+    </section>
+
+    <!-- Results Table Section -->
+    <section class="schooltec-card table-section-modern">
+        <div class="table-header-alt">
+            <h3>Examination Results</h3>
+        </div>
+        <table class="schooltec-table">
+            <thead>
+                <tr>
+                    <th>Subject / Module</th>
+                    <th>Internal</th>
+                    <th>External</th>
+                    <th>Total Score</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let result of examResults">
+                    <td><strong class="subject-name">{{ result.subject }}</strong></td>
+                    <td><span class="score-pill">{{ result.internal }}</span></td>
+                    <td><span class="score-pill">{{ result.external }}</span></td>
+                    <td><strong class="total-score-text">{{ result.total }}</strong></td>
+                    <td>
+                        <span class="grade-badge-modern" [attr.data-grade]="result.grade">
+                            {{ result.grade }}
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>

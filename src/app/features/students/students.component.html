@@ -1,0 +1,72 @@
+<div class="schooltec-module-container">
+    <header class="module-header-row">
+        <div class="header-info">
+            <h1>Student Information</h1>
+            <p>Manage and monitor academic student records.</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn-schooltec primary">
+                <i class="fas fa-plus"></i> Enroll Student
+            </button>
+            <button class="btn-schooltec secondary">
+                <i class="fas fa-file-export"></i> Export
+            </button>
+        </div>
+    </header>
+
+    <!-- Filter & Search Section -->
+    <section class="schooltec-card filter-section-modern">
+        <div class="search-box-modern">
+            <i class="fas fa-search"></i>
+            <input type="text" (input)="onSearch($event)" placeholder="Search by name, ID or course...">
+        </div>
+        <div class="filter-group">
+            <select class="select-schooltec">
+                <option>All Departments</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Data Table Section -->
+    <section class="schooltec-card table-section-modern">
+        <table class="schooltec-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Student</th>
+                    <th>Course</th>
+                    <th>Year</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of filteredStudents">
+                    <td class="id-text">#{{ student.id }}</td>
+                    <td>
+                        <div class="student-profile-cell">
+                            <div class="avatar-box">{{ student.name[0] }}</div>
+                            <div class="profile-info">
+                                <span class="p-name">{{ student.name }}</span>
+                                <span class="p-email">{{ student.email }}</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{ student.course }}</td>
+                    <td><span class="year-pill">{{ student.year }}</span></td>
+                    <td>
+                        <span class="status-pill" [class.active]="student.status === 'Active'">
+                            {{ student.status }}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="action-buttons-row">
+                            <button class="icon-btn-schooltec"><i class="fas fa-edit"></i></button>
+                            <button class="icon-btn-schooltec delete"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>

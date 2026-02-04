@@ -1,0 +1,228 @@
+.schooltec-module-container {
+    padding: 30px 40px;
+    margin-left: 280px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.module-header-row {
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.header-info h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.header-info p {
+    color: var(--text-muted);
+    margin-top: 5px;
+}
+
+.attendance-summary-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.summary-card-modern {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 30px 40px;
+}
+
+.circular-chart {
+    display: block;
+    width: 80px;
+    height: 80px;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #f1f5f9;
+    stroke-width: 3;
+}
+
+.circle {
+    fill: none;
+    stroke-width: 3;
+    stroke: var(--primary-blue);
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.5s ease;
+}
+
+.progress-ring-minimal {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.perc-text {
+    position: absolute;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.summary-content-alt h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin: 0 0 5px 0;
+}
+
+.summary-content-alt p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.trend-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.trend-label.up {
+    background: #ecfdf5;
+    color: #10b981;
+}
+
+.mini-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+}
+
+.mini-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.mini-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.mlabel {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.mvalue {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.subject-name {
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+.session-counter {
+    font-weight: 700;
+}
+
+.val-p {
+    color: var(--primary-blue);
+    font-size: 1.1rem;
+}
+
+.val-sep {
+    margin: 0 4px;
+    color: #cbd5e1;
+}
+
+.val-t {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.linear-progress-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.progress-bar-bg {
+    flex: 1;
+    height: 8px;
+    background: #f1f5f9;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: var(--primary-blue);
+    border-radius: 4px;
+}
+
+.progress-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #64748b;
+    min-width: 35px;
+}
+
+.status-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.status-chip.success {
+    background: #ecfdf5;
+    color: #10b981;
+}
+
+.status-chip.danger {
+    background: #fef2f2;
+    color: #ef4444;
+}
+
+@media (max-width: 1100px) {
+    .attendance-summary-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .schooltec-module-container {
+        margin-left: 0;
+        padding: 20px;
+    }
+}

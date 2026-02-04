@@ -1,0 +1,35 @@
+<div class="schooltec-module-container">
+    <header class="module-header-row">
+        <div class="header-info">
+            <h1>Campus Notices</h1>
+            <p>Stay updated with synchronized academic and campus news.</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn-schooltec primary">
+                <i class="fas fa-bullhorn"></i> Post Notice
+            </button>
+        </div>
+    </header>
+
+    <div class="notices-list-modern">
+        <div class="schooltec-card notice-item-modern" *ngFor="let notice of notices">
+            <div class="notice-category-strip" [attr.data-category]="notice.category"></div>
+
+            <div class="notice-main-alt">
+                <div class="notice-top-row">
+                    <span class="category-pill-alt" [attr.data-category]="notice.category">{{ notice.category }}</span>
+                    <span class="notice-date-alt"><i class="far fa-calendar"></i> {{ notice.date }}</span>
+                </div>
+
+                <h3>{{ notice.title }}</h3>
+                <p>{{ notice.content }}</p>
+            </div>
+
+            <div class="notice-action-alt">
+                <button class="icon-btn-schooltec-flat">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

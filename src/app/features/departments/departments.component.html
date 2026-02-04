@@ -1,0 +1,35 @@
+<div class="module-wrapper">
+    <div class="module-header hero-content">
+        <h2 class="gradient-text">Departmental Hub</h2>
+        <p>Unified oversight of various academic branches and leadership entities.</p>
+    </div>
+
+    <div class="dept-creative-grid">
+        <div class="dept-glass-card glass-card hover-glow" *ngFor="let dept of departments">
+            <div class="dept-floating-icon"><i class="fas fa-building"></i></div>
+            <div class="dept-header-adv">
+                <div class="dept-icon-box glass-card"><i class="fas fa-university"></i></div>
+                <h3>{{ dept.name }}</h3>
+            </div>
+            <div class="dept-leadership glass-card">
+                <span class="label">Head of Department</span>
+                <p>{{ dept.hod }}</p>
+            </div>
+            <div class="dept-stats-adv">
+                <div class="stat-item">
+                    <i class="fas fa-users-viewfinder"></i>
+                    <span class="val">{{ dept.facultyCount }}</span>
+                    <span class="lab">Staff</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-user-graduate"></i>
+                    <span class="val">{{ dept.studentCount }}</span>
+                    <span class="lab">Students</span>
+                </div>
+            </div>
+            <div class="dept-footer-adv">
+                <button class="btn-adv btn-glass">Explore</button>
+            </div>
+        </div>
+    </div>
+</div>

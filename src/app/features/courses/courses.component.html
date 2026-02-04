@@ -1,0 +1,45 @@
+<div class="schooltec-module-container">
+    <header class="module-header-row">
+        <div class="header-info">
+            <h1>Academic Curriculum</h1>
+            <p>Comprehensive catalog of core and elective courses for your major.</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn-schooltec primary">
+                <i class="fas fa-book"></i> Browse Catalog
+            </button>
+        </div>
+    </header>
+
+    <div class="courses-grid-modern">
+        <div class="schooltec-card course-card-modern" *ngFor="let course of courses">
+            <div class="course-header-alt">
+                <span class="course-code-badge">{{ course.code }}</span>
+                <span class="course-type-pill" [class.core]="course.type === 'Core'">{{ course.type }}</span>
+            </div>
+
+            <div class="course-content-main">
+                <h3>{{ course.name }}</h3>
+                <div class="course-stats-row">
+                    <div class="stat-item">
+                        <i class="fas fa-certificate"></i>
+                        <span>{{ course.credits }} Credits</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-clock"></i>
+                        <span>45 Hours</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-card-footer">
+                <button class="btn-schooltec-outline full">
+                    <i class="fas fa-file-alt"></i> View Syllabus
+                </button>
+                <button class="icon-btn-schooltec primary-sm">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

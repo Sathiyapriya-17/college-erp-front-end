@@ -1,0 +1,115 @@
+.navbar {
+    height: 80px;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    left: 300px;
+    z-index: 999;
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--card-shadow);
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-box i {
+    position: absolute;
+    left: 15px;
+    color: var(--text-muted);
+}
+
+.search-box input {
+    padding: 12px 20px 12px 45px;
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    background: var(--glass);
+    color: var(--text-main);
+    outline: none;
+    width: 300px;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.search-box input:focus {
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.12);
+    width: 350px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-icon {
+    position: relative;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 14px;
+    transition: var(--transition);
+    background: var(--glass);
+}
+
+.nav-icon:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--text-main);
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--primary);
+    color: white;
+    font-size: 0.7rem;
+    padding: 3px 6px;
+    border-radius: 8px;
+    font-weight: 700;
+    box-shadow: 0 0 10px var(--primary-glow);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, var(--glass), rgba(255, 255, 255, 0.02));
+    border-radius: 16px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+    border: 1px solid var(--glass-border);
+}
+
+.user-profile:hover {
+    border-color: var(--primary);
+    background: var(--glass);
+}
+
+.user-profile span {
+    font-size: 0.9rem;
+}
+
+.user-profile i {
+    color: var(--primary);
+}

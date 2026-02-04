@@ -1,0 +1,73 @@
+<div class="schooltec-login-page">
+  <div class="login-container-modern">
+    <!-- Left Section: 3D Illustration -->
+    <div class="login-visual-panel">
+      <div class="visual-content">
+        <img src="assets/pachiyappa's college.webp" alt="University Digital Campus" class="campus-3d-image">
+        <div class="floating-blobs">
+          <div class="blob b1"></div>
+          <div class="blob b2"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Section: Login Form -->
+    <div class="login-form-panel">
+      <div class="form-card-modern">
+        <div class="form-header">
+          <div class="brand-logotype">
+            <i class="fas fa-university"></i>
+            <span>Schooltec</span>
+          </div>
+          <h1>System Login</h1>
+          <p>Please enter your credentials to access the ERP platform.</p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="modern-form">
+          <!-- Role Selection with Pill Pills -->
+          <div class="role-pills">
+            <label *ngFor="let r of roles" class="pill-option"
+              [class.active]="loginForm.get('role')?.value === r.value">
+              <input type="radio" formControlName="role" [value]="r.value">
+              <span>{{ r.label }}</span>
+            </label>
+          </div>
+
+          <div class="input-group-modern">
+            <label>Username / Email</label>
+            <div class="input-field-wrapper">
+              <i class="fas fa-envelope"></i>
+              <input type="text" formControlName="username" placeholder="Type your username..."
+                [class.error]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+            </div>
+          </div>
+
+          <div class="input-group-modern">
+            <div class="lbl-row">
+              <label>Password</label>
+              <a href="#" class="forgot-link">Forgot password?</a>
+            </div>
+            <div class="input-field-wrapper">
+              <i class="fas fa-lock"></i>
+              <input type="password" formControlName="password" placeholder="Type your password..."
+                [class.error]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+            </div>
+          </div>
+
+          <button type="submit" [disabled]="loginForm.invalid || isLoading" class="btn-login-modern">
+            <span *ngIf="!isLoading">Authorize Account <i class="fas fa-sign-in-alt"></i></span>
+            <span *ngIf="isLoading" class="loader-simple"></span>
+          </button>
+
+          <div class="form-footer-alt">
+            <p>New staff member? <a href="#">Contact HR</a></p>
+          </div>
+
+          <div class="modern-toast error" *ngIf="error">
+            <i class="fas fa-exclamation-circle"></i> {{ error }}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="schooltec-module-container">
+    <header class="module-header-row">
+        <div class="header-info">
+            <h1>Academic Timetable</h1>
+            <p>Weekly view of synchronized classes, laboratories, and academic sessions.</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn-schooltec primary">
+                <i class="fas fa-calendar-plus"></i> Modify Schedule
+            </button>
+        </div>
+    </header>
+
+    <div class="schooltec-card timetable-section-modern">
+        <div class="table-scroll-alt">
+            <table class="schooltec-table schedule-table-alt">
+                <thead>
+                    <tr>
+                        <th class="time-header">Time Slot</th>
+                        <th *ngFor="let day of days">{{ day }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let slot of timeSlots; let i = index">
+                        <td class="time-cell-alt">
+                            <div class="slot-time">{{ slot }}</div>
+                        </td>
+                        <td *ngFor="let day of days" [class.break-cell]="schedule[day][i] === 'Lunch'">
+                            <div class="subject-card-alt" *ngIf="schedule[day][i] !== 'Lunch'">
+                                <div class="sub-name-alt">{{ schedule[day][i] }}</div>
+                                <div class="room-tag-alt">Room 302</div>
+                            </div>
+                            <div class="break-card-alt" *ngIf="schedule[day][i] === 'Lunch'">
+                                <i class="fas fa-mug-hot"></i>
+                                <span>Break</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
