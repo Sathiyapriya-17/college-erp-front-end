@@ -20,50 +20,58 @@ export class DashboardComponent implements OnInit {
 
     ngOnInit(): void {
         this.user = this.authService.getCurrentUser();
+        // Fallback user if null (for development view)
+        if (!this.user) {
+            this.user = { name: 'Admin User', role: 'admin' };
+        }
+
         this.loadStats();
         this.loadMockData();
     }
 
     loadMockData() {
+        // Indian Localized Data
         this.topPerformers = [
-            { name: 'Marke Angel', id: '245690', year: '2019', marks: '1440', rank: '98.95%', status: 'up' },
-            { name: 'Angel Korrea', id: '245690', year: '2020', marks: '1225', rank: '98.95%', status: 'up' },
-            { name: 'Lucifer Zen', id: '245690', year: '2018', marks: '0875', rank: '98.95%', status: 'down' },
-            { name: 'Trent Boult', id: '245690', year: '2019', marks: '1230', rank: '98.95%', status: 'up' },
-            { name: 'Droid Man', id: '245690', year: '2021', marks: '1160', rank: '98.95%', status: 'up' }
+            { name: 'Aarav Sharma', id: '245690', year: '2023', marks: '1440', rank: '99.5%', status: 'up' },
+            { name: 'Priya Patel', id: '245691', year: '2024', marks: '1425', rank: '98.9%', status: 'up' },
+            { name: 'Rohan Gupta', id: '245692', year: '2023', marks: '1380', rank: '97.2%', status: 'down' },
+            { name: 'Ananya Iyer', id: '245693', year: '2023', marks: '1350', rank: '96.5%', status: 'up' },
+            { name: 'Vikram Singh', id: '245694', year: '2024', marks: '1320', rank: '95.8%', status: 'up' }
         ];
 
         this.paymentRequests = [
-            { id: '#323512', desc: 'Payment Request sent to #45678 (Mark Angel)', status: 'sent', date: 'Today' },
-            { id: '#323512', desc: 'Payment Due of #45678 (Atlain Chopel)', status: 'due', date: 'Yesterday' },
-            { id: '#323512', desc: 'Payment Received from #45678 (Roger Federa)', status: 'received', date: '2 days ago' },
-            { id: '#323512', desc: 'Payment Pending of #45678 (Angelina K.)', status: 'pending', date: '3 days ago' }
+            { id: '#323512', desc: 'Tuition Fee paid by Rajesh Kumar', status: 'success', date: 'Today' },
+            { id: '#323513', desc: 'Exam Fee due for Sneha Reddy', status: 'pending', date: 'Yesterday' },
+            { id: '#323514', desc: 'Hostel Fee paid by Amit Verma', status: 'success', date: '2 days ago' },
+            { id: '#323515', desc: 'Library Fine pending for Kavita', status: 'pending', date: '3 days ago' }
         ];
 
-        this.attendanceHistory = [40, 60, 42, 80, 50, 70, 90, 85, 75, 80, 85, 95];
+        this.attendanceHistory = [65, 78, 85, 92, 88, 70, 75, 95, 98, 85, 90, 96];
     }
 
     loadStats() {
-        if (this.user.role === 'admin') {
+        const role = this.user.role || 'admin';
+
+        if (role === 'admin') {
             this.stats = [
-                { label: 'Total Students', value: '1,250', icon: 'fas fa-user-graduate', color: '#4e73df' },
-                { label: 'Total Faculty', value: '85', icon: 'fas fa-chalkboard-teacher', color: '#1cc88a' },
-                { label: 'Total Departments', value: '12', icon: 'fas fa-building', color: '#36b9cc' },
-                { label: 'Pending Fees', value: '$15,400', icon: 'fas fa-dollar-sign', color: '#f6c23e' }
+                { label: 'Total Students', value: '2,450', icon: 'fas fa-user-graduate', color: '#4cc9f0' },
+                { label: 'Total Faculty', value: '120', icon: 'fas fa-chalkboard-teacher', color: '#7209b7' },
+                { label: 'Departments', value: '18', icon: 'fas fa-building', color: '#f72585' },
+                { label: 'Pending Fees', value: '₹4.5L', icon: 'fas fa-rupee-sign', color: '#ef476f' } // Indian Currency
             ];
-        } else if (this.user.role === 'faculty') {
+        } else if (role === 'faculty') {
             this.stats = [
-                { label: 'Assigned Courses', value: '4', icon: 'fas fa-book', color: '#4e73df' },
-                { label: 'Total Students', value: '180', icon: 'fas fa-user-graduate', color: '#1cc88a' },
-                { label: 'Attendance Average', value: '92%', icon: 'fas fa-clipboard-check', color: '#36b9cc' },
-                { label: 'Upcoming Exams', value: '2', icon: 'fas fa-file-invoice', color: '#f6c23e' }
+                { label: 'My Courses', value: '5', icon: 'fas fa-book', color: '#4cc9f0' },
+                { label: 'My Students', value: '240', icon: 'fas fa-user-graduate', color: '#7209b7' },
+                { label: 'Attendance', value: '94%', icon: 'fas fa-clipboard-check', color: '#f72585' },
+                { label: 'Assignments', value: '12', icon: 'fas fa-file-alt', color: '#ef476f' }
             ];
         } else {
             this.stats = [
-                { label: 'Current CGPA', value: '3.8', icon: 'fas fa-star', color: '#4e73df' },
-                { label: 'Attendance', value: '95%', icon: 'fas fa-clipboard-check', color: '#1cc88a' },
-                { label: 'Completed Credits', value: '64', icon: 'fas fa-book', color: '#36b9cc' },
-                { label: 'Due Fees', value: '$0', icon: 'fas fa-check-circle', color: '#f6c23e' }
+                { label: 'CGPA', value: '8.9', icon: 'fas fa-star', color: '#4cc9f0' },
+                { label: 'Attendance', value: '96%', icon: 'fas fa-check-circle', color: '#7209b7' },
+                { label: 'Credits', value: '42', icon: 'fas fa-award', color: '#f72585' },
+                { label: 'Fee Due', value: '₹0', icon: 'fas fa-rupee-sign', color: '#ef476f' }
             ];
         }
     }

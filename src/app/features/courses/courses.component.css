@@ -1,175 +1,44 @@
-.schooltec-module-container {
-    padding: 30px 40px;
-    margin-left: 280px;
-    animation: fadeIn 0.5s ease-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.module-header-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 40px;
-}
-
-.header-info h1 {
-    font-size: 2rem;
-    font-weight: 800;
-    margin: 0;
-    letter-spacing: -0.5px;
-}
-
-.header-info p {
-    color: var(--text-muted);
-    margin-top: 5px;
-}
-
-.courses-grid-modern {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
-}
-
-.course-card-modern {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.3s ease;
-}
-
-.course-card-modern:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
-
-.course-header-alt {
-    padding: 25px 25px 15px;
+.page-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 30px;
 }
 
-.course-code-badge {
-    font-size: 0.75rem;
+.header-title h1 {
+    font-size: 1.8rem;
     font-weight: 800;
-    color: var(--primary-blue);
-    background: #eff6ff;
-    padding: 4px 10px;
-    border-radius: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.course-type-pill {
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: #64748b;
-    background: #f1f5f9;
-    padding: 4px 10px;
-    border-radius: 20px;
-    text-transform: uppercase;
-}
-
-.course-type-pill.core {
-    background: #fffbeb;
-    color: #d97706;
-}
-
-.course-content-main {
-    padding: 0 25px 25px;
-}
-
-.course-content-main h3 {
-    font-size: 1.2rem;
-    font-weight: 800;
+    margin: 0 0 5px;
     color: var(--text-main);
-    margin: 0 0 15px 0;
-    line-height: 1.4;
-    height: 3.4em;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
 }
 
-.course-stats-row {
-    display: flex;
-    gap: 15px;
+.header-title p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: 0;
 }
 
-.stat-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.85rem;
-    color: #64748b;
+.dept-badge {
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: rgba(114, 9, 183, 0.1);
+    color: var(--accent-purple);
     font-weight: 600;
+    font-size: 0.8rem;
 }
 
-.stat-item i {
-    color: var(--primary-blue);
-    font-size: 0.9rem;
-}
-
-.course-card-footer {
-    padding: 20px 25px 25px;
-    display: flex;
-    gap: 12px;
-    border-top: 1px solid #f8fafc;
-    margin-top: auto;
-}
-
-.btn-schooltec-outline.full {
-    flex: 1;
-    background: white;
-    border: 1px solid #e2e8f0;
-    color: #64748b;
-    padding: 10px;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 0.85rem;
-    cursor: pointer;
-}
-
-.btn-schooltec-outline:hover {
-    background: #f8fafc;
-    color: var(--primary-blue);
-    border-color: var(--primary-blue);
-}
-
-.icon-btn-schooltec.primary-sm {
-    width: 38px;
-    height: 38px;
-    background: var(--primary-blue);
-    color: white;
+.icon-btn-sm {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
     border: none;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: transparent;
+    color: var(--text-muted);
     cursor: pointer;
+    transition: var(--transition);
 }
 
-.icon-btn-schooltec:hover {
-    transform: scale(1.05);
-    filter: brightness(1.1);
-}
-
-@media (max-width: 768px) {
-    .schooltec-module-container {
-        margin-left: 0;
-        padding: 20px;
-    }
+.icon-btn-sm:hover {
+    background: var(--bg-hover);
+    color: var(--primary-blue);
 }

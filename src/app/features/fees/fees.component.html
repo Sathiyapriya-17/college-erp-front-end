@@ -1,82 +1,54 @@
-<div class="schooltec-module-container">
-    <header class="module-header-row">
-        <div class="header-info">
-            <h1>Finance & Payments</h1>
-            <p>Seamless management and tracking of academic financial commitments.</p>
-        </div>
-        <div class="header-actions">
-            <button class="btn-schooltec primary">
-                <i class="fas fa-credit-card"></i> Online Payment
-            </button>
-            <button class="btn-schooltec secondary">
-                <i class="fas fa-history"></i> History
-            </button>
-        </div>
-    </header>
+<div class="page-header">
+    <div class="header-title">
+        <h1>Fee Management</h1>
+        <p>Track student fee payments and dues.</p>
+    </div>
+    <div class="header-actions">
+        <button class="btn-primary">
+            <i class="fas fa-rupee-sign"></i> Collect Fee
+        </button>
+    </div>
+</div>
 
-    <!-- Financial Summary Section -->
-    <section class="fees-summary-grid">
-        <div class="schooltec-card fee-summary-card">
-            <div class="fee-icon blue"><i class="fas fa-wallet"></i></div>
-            <div class="fee-data">
-                <span class="f-label">Total Fee Amount</span>
-                <h3 class="f-value">${{ totalAmount }}</h3>
-            </div>
-        </div>
-
-        <div class="schooltec-card fee-summary-card">
-            <div class="fee-icon green"><i class="fas fa-check-circle"></i></div>
-            <div class="fee-data">
-                <span class="f-label">Total Paid</span>
-                <h3 class="f-value">${{ totalPaid }}</h3>
-            </div>
-        </div>
-
-        <div class="schooltec-card fee-summary-card highlighting">
-            <div class="fee-icon red"><i class="fas fa-exclamation-triangle"></i></div>
-            <div class="fee-data">
-                <span class="f-label">Balance Due</span>
-                <h3 class="f-value text-danger">${{ totalAmount - totalPaid }}</h3>
-            </div>
-        </div>
-    </section>
-
-    <!-- Transactions Table Section -->
-    <section class="schooltec-card table-section-modern">
-        <div class="table-header-alt">
-            <h3>Transaction History</h3>
-        </div>
-        <table class="schooltec-table">
+<div class="dashboard-card">
+    <div class="table-responsive">
+        <table class="clean-table">
             <thead>
                 <tr>
-                    <th>Transaction Type</th>
+                    <th>Receipt No</th>
+                    <th>Student</th>
+                    <th>Fee Type</th>
                     <th>Amount</th>
-                    <th>Paid</th>
                     <th>Date</th>
                     <th>Status</th>
-                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let fee of feeDetails">
-                    <td><strong class="transaction-type">{{ fee.type }}</strong></td>
-                    <td><span class="currency-text">${{ fee.amount }}</span></td>
-                    <td><span class="currency-text paid">${{ fee.paid }}</span></td>
-                    <td class="date-text">{{ fee.date }}</td>
-                    <td>
-                        <span class="status-pill-finance" [attr.data-status]="fee.status">
-                            {{ fee.status }}
-                        </span>
-                    </td>
-                    <td>
-                        <div class="action-row-finance">
-                            <button class="btn-schooltec-sm primary" *ngIf="fee.status !== 'Paid'">Pay Now</button>
-                            <button class="icon-btn-schooltec" *ngIf="fee.status === 'Paid'"><i
-                                    class="fas fa-file-download"></i></button>
-                        </div>
-                    </td>
+                <tr>
+                    <td>#REC-1001</td>
+                    <td>Rajesh Kumar (#202305)</td>
+                    <td>Tuition Fee (Sem 4)</td>
+                    <td style="font-weight: 700;">₹ 45,000</td>
+                    <td>01 Feb 2026</td>
+                    <td><span class="status-badge paid">Paid</span></td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>Priya Patel (#202302)</td>
+                    <td>Exam Fee</td>
+                    <td style="font-weight: 700;">₹ 2,500</td>
+                    <td>-</td>
+                    <td><span class="status-badge due">Due</span></td>
+                </tr>
+                <tr>
+                    <td>#REC-1002</td>
+                    <td>Vikram Singh (#202308)</td>
+                    <td>Library Fine</td>
+                    <td style="font-weight: 700;">₹ 150</td>
+                    <td>03 Feb 2026</td>
+                    <td><span class="status-badge paid">Paid</span></td>
                 </tr>
             </tbody>
         </table>
-    </section>
+    </div>
 </div>

@@ -2,10 +2,11 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './features/auth/login/login.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
+import { authGuard } from './core/guards/auth.guard';
 
 import { StudentsComponent } from './features/students/students.component';
 import { AttendanceComponent } from './features/attendance/attendance.component';
-import { FacultyComponent } from './features/facutly/faculty.component';
+import { FacultyComponent } from './features/faculty/faculty.component';
 import { ExamsComponent } from './features/exams/exams.component';
 import { TimetableComponent } from './features/timetable/timetable.component';
 import { NoticesComponent } from './features/notices/notices.component';
@@ -18,6 +19,7 @@ export const routes: Routes = [
     {
         path: '',
         component: MainLayoutComponent,
+        canActivate: [authGuard],
         children: [
             { path: 'dashboard', component: DashboardComponent },
             { path: 'students', component: StudentsComponent },

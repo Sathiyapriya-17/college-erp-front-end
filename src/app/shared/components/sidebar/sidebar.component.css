@@ -1,29 +1,41 @@
 .sidebar-floating-container {
-    width: 240px;
+    width: 260px;
     height: calc(100vh - 40px);
-    background-color: var(--bg-sidebar);
+    background: var(--bg-card);
+    /* Dark card background */
     border-radius: var(--radius-lg);
     margin: 20px;
     display: flex;
     flex-direction: column;
-    padding: 30px 10px;
-    box-shadow: 0 10px 40px rgba(75, 111, 255, 0.2);
+    padding: 30px 15px;
+    box-shadow: var(--shadow-float);
     position: fixed;
+    top: 0;
+    left: 0;
     z-index: 1000;
-    transition: all 0.4s ease;
+    border: 1px solid var(--glass-border);
 }
 
 .sidebar-header {
-    padding: 0 20px 40px;
+    padding: 10px 15px 40px;
 }
 
 .brand-logo {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: white;
+    color: var(--text-main);
     font-size: 1.5rem;
     font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.brand-logo i {
+    font-size: 1.8rem;
+    color: var(--primary-blue);
+    background: rgba(67, 97, 238, 0.1);
+    padding: 8px;
+    border-radius: 10px;
 }
 
 .sidebar-nav {
@@ -31,86 +43,113 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+    width: 0px;
 }
 
 .nav-item {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 16px;
     padding: 14px 20px;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-secondary);
     text-decoration: none;
     font-weight: 500;
     border-radius: var(--radius-md);
-    transition: all 0.3s ease;
+    transition: var(--transition);
+    font-size: 0.95rem;
 }
 
 .nav-item i {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     width: 24px;
     text-align: center;
+    transition: transform 0.3s;
+    color: var(--text-muted);
 }
 
 .nav-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
+    background: var(--bg-hover);
+    color: var(--text-main);
+    padding-left: 25px;
+}
+
+.nav-item:hover i {
+    transform: scale(1.1);
+    color: var(--primary-light);
 }
 
 .nav-item.active {
-    background: white;
-    color: var(--bg-sidebar);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    background: var(--primary-blue);
+    color: white;
+    font-weight: 700;
+    box-shadow: var(--shadow-md);
 }
 
-.sidebar-footer {
-    padding: 0 10px;
-}
-
-.admin-request-card {
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 24px 20px;
-    border-radius: var(--radius-lg);
-    text-align: center;
+.nav-item.active i {
     color: white;
 }
 
+.sidebar-footer {
+    padding: 20px 5px 0;
+    margin-top: auto;
+}
+
+.admin-request-card {
+    background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(114, 9, 183, 0.1));
+    border: 1px solid var(--glass-border);
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    color: var(--text-main);
+    position: relative;
+    overflow: hidden;
+}
+
 .card-icon {
-    width: 50px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.2);
+    width: 48px;
+    height: 48px;
+    background: var(--bg-card);
+    color: var(--primary-blue);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 15px;
+    margin: 0 auto 12px;
     font-size: 1.2rem;
+    box-shadow: var(--shadow-sm);
 }
 
 .admin-request-card p {
     font-size: 0.9rem;
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
+    margin-top: 0;
+    color: var(--text-secondary);
 }
 
 .btn-be-admin {
     width: 100%;
-    padding: 10px;
-    background: white;
-    color: var(--bg-sidebar);
+    padding: 12px;
+    background: var(--primary-blue);
+    color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    transition: transform 0.2s;
+    transition: var(--transition);
 }
 
 .btn-be-admin:hover {
     transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--primary-glow);
 }

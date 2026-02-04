@@ -1,0 +1,48 @@
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header-title h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin: 0 0 5px;
+    color: var(--text-main);
+}
+
+.header-title p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.dept-badge {
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: rgba(67, 97, 238, 0.1);
+    color: var(--primary-light);
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.icon-btn-sm {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.icon-btn-sm:hover {
+    background: var(--bg-hover);
+    color: var(--primary-blue);
+}
+
+.icon-btn-sm.danger:hover {
+    color: var(--danger);
+}

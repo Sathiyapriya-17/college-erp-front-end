@@ -1,0 +1,55 @@
+<div class="page-header">
+    <div class="header-title">
+        <h1>Faculty Members</h1>
+        <p>View and manage teaching staff details.</p>
+    </div>
+    <div class="header-actions">
+        <button class="btn-primary">
+            <i class="fas fa-plus"></i> Add Faculty
+        </button>
+    </div>
+</div>
+
+<div class="dashboard-card">
+    <div class="table-responsive">
+        <table class="clean-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Designation</th>
+                    <th>Department</th>
+                    <th>Qualification</th>
+                    <th>Joining Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngIf="(faculty$ | async) as facultyList">
+                    <tr *ngFor="let f of facultyList">
+                        <td>
+                            <div class="student-info">
+                                <div class="avatar-sm"
+                                    style="background: rgba(114, 9, 183, 0.1); color: var(--accent-purple);">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                </div>
+                                <div>
+                                    <span style="font-weight: 600; display: block;">{{ f.firstName }} {{ f.lastName
+                                        }}</span>
+                                    <span style="font-size: 0.75rem; color: var(--text-muted);">{{ f.email }}</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>{{ f.designation }}</td>
+                        <td><span class="dept-badge">Dept {{ f.departmentId }}</span></td>
+                        <td>{{ f.qualification }}</td>
+                        <td>{{ f.joiningDate | date }}</td>
+                        <td>
+                            <button class="icon-btn-sm"><i class="fas fa-edit"></i></button>
+                            <button class="icon-btn-sm danger"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>

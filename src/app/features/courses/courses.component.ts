@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CoursesService } from './services/courses.service';
+import { Course } from './models/course.model';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-courses',
@@ -9,12 +12,11 @@ import { CommonModule } from '@angular/common';
     styleUrl: './courses.component.css'
 })
 export class CoursesComponent implements OnInit {
-    courses = [
-        { code: 'CS101', name: 'Intro to Computer Science', credits: 4, type: 'Core' },
-        { code: 'MA201', name: 'Advanced Mathematics', credits: 3, type: 'Core' },
-        { code: 'PH102', name: 'Engineering Physics', credits: 4, type: 'Core' },
-        { code: 'HU301', name: 'Professional Ethics', credits: 2, type: 'Elective' }
-    ];
+    courses$: Observable<Course[]> | undefined;
 
-    ngOnInit(): void { }
+    constructor(private coursesService: CoursesService) { }
+
+    ngOnInit(): void {
+        this.courses$ = this.coursesService.getAllCourses();
+    }
 }

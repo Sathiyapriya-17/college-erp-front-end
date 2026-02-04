@@ -1,72 +1,68 @@
-<div class="schooltec-module-container">
-    <header class="module-header-row">
-        <div class="header-info">
-            <h1>Student Information</h1>
-            <p>Manage and monitor academic student records.</p>
-        </div>
-        <div class="header-actions">
-            <button class="btn-schooltec primary">
-                <i class="fas fa-plus"></i> Enroll Student
-            </button>
-            <button class="btn-schooltec secondary">
-                <i class="fas fa-file-export"></i> Export
-            </button>
-        </div>
-    </header>
+<div class="page-header">
+    <div class="header-title">
+        <h1>Student Information</h1>
+        <p>Manage and monitor academic student records.</p>
+    </div>
+    <div class="header-actions">
+        <button class="btn-primary" (click)="openAddModal()">
+            <i class="fas fa-plus"></i> Enroll Student
+        </button>
+    </div>
+</div>
 
-    <!-- Filter & Search Section -->
-    <section class="schooltec-card filter-section-modern">
-        <div class="search-box-modern">
-            <i class="fas fa-search"></i>
-            <input type="text" (input)="onSearch($event)" placeholder="Search by name, ID or course...">
+<div class="dashboard-card">
+    <div class="card-header">
+        <div class="search-sort">
+            <div class="search-box-page">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search by name, enrollment no...">
+            </div>
         </div>
-        <div class="filter-group">
-            <select class="select-schooltec">
-                <option>All Departments</option>
-            </select>
+        <div class="filter-actions">
+            <!-- Filter buttons can go here -->
         </div>
-    </section>
+    </div>
 
-    <!-- Data Table Section -->
-    <section class="schooltec-card table-section-modern">
-        <table class="schooltec-table">
+    <div class="table-responsive">
+        <table class="clean-table">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Student</th>
-                    <th>Course</th>
-                    <th>Year</th>
-                    <th>Status</th>
-                    <th>Actions</th>
+                    <th>Student Name</th>
+                    <th>Enrollment No</th>
+                    <th>Department</th>
+                    <th>Batch</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let student of filteredStudents">
-                    <td class="id-text">#{{ student.id }}</td>
-                    <td>
-                        <div class="student-profile-cell">
-                            <div class="avatar-box">{{ student.name[0] }}</div>
-                            <div class="profile-info">
-                                <span class="p-name">{{ student.name }}</span>
-                                <span class="p-email">{{ student.email }}</span>
+                <ng-container *ngIf="(students$ | async) as students">
+                    <tr *ngFor="let student of students">
+                        <td>#{{ student.id }}</td>
+                        <td>
+                            <div class="student-info">
+                                <div class="avatar-sm">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div>
+                                    <span style="font-weight: 600; display: block;">{{ student.firstName }} {{
+                                        student.lastName }}</span>
+                                    <span style="font-size: 0.75rem; color: var(--text-muted);">{{ student.email
+                                        }}</span>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                    <td>{{ student.course }}</td>
-                    <td><span class="year-pill">{{ student.year }}</span></td>
-                    <td>
-                        <span class="status-pill" [class.active]="student.status === 'Active'">
-                            {{ student.status }}
-                        </span>
-                    </td>
-                    <td>
-                        <div class="action-buttons-row">
-                            <button class="icon-btn-schooltec"><i class="fas fa-edit"></i></button>
-                            <button class="icon-btn-schooltec delete"><i class="fas fa-trash-alt"></i></button>
-                        </div>
-                    </td>
-                </tr>
+                        </td>
+                        <td>{{ student.enrollmentNo }}</td>
+                        <td><span class="dept-badge">Dept {{ student.departmentId }}</span></td>
+                        <td>{{ student.batch }}</td>
+                        <td>
+                            <button class="icon-btn-sm" (click)="onEdit(student)"><i class="fas fa-edit"></i></button>
+                            <button class="icon-btn-sm danger" (click)="onDelete(student.id)"><i
+                                    class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </ng-container>
             </tbody>
         </table>
-    </section>
+    </div>
 </div>

@@ -1,47 +1,38 @@
 <div class="schooltec-dashboard">
-    <!-- Dashboard Top Bar -->
-    <header class="dashboard-top-bar">
-        <div class="search-container">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search for students/teachers/documents...">
-        </div>
-        <div class="top-bar-actions">
-            <button class="icon-btn notification">
-                <i class="fas fa-bell"></i>
-                <span class="badge"></span>
-            </button>
-            <div class="user-profile-mini">
-                <div class="user-info">
-                    <span class="user-name">Hello, {{ user.name }}</span>
-                    <span class="user-role">{{ user.role | titlecase }}</span>
-                </div>
-                <div class="avatar-circle">
-                    <i class="fas fa-user"></i>
-                </div>
-            </div>
-        </div>
-    </header>
+    <!-- Welcome Banner not needed as design requested is minimalist, sticking to cards -->
 
     <div class="dashboard-grid">
-        <!-- Main Left Column -->
+        <!-- Main Content Column -->
         <div class="grid-col main-col">
-            <!-- Top Performer Table Section -->
-            <section class="schooltec-card perf-section">
-                <div class="section-header">
-                    <h3>Top Performer</h3>
-                    <div class="btn-group">
-                        <button class="active">Today</button>
-                        <button>Week</button>
-                        <button>Month</button>
+            <!-- Stats Row -->
+            <div class="stats-grid">
+                <div class="stat-card" *ngFor="let s of stats">
+                    <div class="stat-content">
+                        <h4>{{ s.label }}</h4>
+                        <p class="stat-value">{{ s.value }}</p>
+                    </div>
+                    <div class="stat-icon" [style.background]="s.color + '15'" [style.color]="s.color">
+                        <i [class]="s.icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Performer Section -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>Top Performers</h3>
+                    <div class="actions">
+                        <button class="btn-filter active">Today</button>
+                        <button class="btn-filter">Week</button>
+                        <button class="btn-filter">Month</button>
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="schooltec-table">
+                    <table class="clean-table">
                         <thead>
                             <tr>
-                                <th>Photo</th>
-                                <th>Name</th>
-                                <th>ID Number</th>
+                                <th>Student</th>
+                                <th>Details</th>
                                 <th>Year</th>
                                 <th>Marks</th>
                                 <th>Rank</th>
@@ -50,91 +41,95 @@
                         <tbody>
                             <tr *ngFor="let student of topPerformers">
                                 <td>
-                                    <div class="avatar-sm"><i class="fas fa-user-circle"></i></div>
+                                    <div class="student-info">
+                                        <div class="avatar-sm">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                        <span style="font-weight: 600;">{{ student.name }}</span>
+                                    </div>
                                 </td>
-                                <td><strong>{{ student.name }}</strong></td>
                                 <td>ID: {{ student.id }}</td>
                                 <td>{{ student.year }}</td>
-                                <td>{{ student.marks }}</td>
+                                <td style="font-weight: 600;">{{ student.marks }}</td>
                                 <td><span class="rank-badge">{{ student.rank }}</span></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-            </section>
+            </div>
 
-            <!-- Schedule/Calendar Section -->
-            <section class="schooltec-card schedule-section">
-                <div class="section-header">
-                    <h3>Schedule</h3>
-                    <span class="sub-header">March 2023</span>
-                </div>
-                <div class="calendar-simplified">
-                    <div class="cal-days">
-                        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
-                    </div>
-                    <div class="cal-grid">
-                        <span *ngFor="let day of [27,28,29,30,31,1,2]" class="muted">{{day}}</span>
-                        <span *ngFor="let day of [3,4,5,6,7,8,9]" [class.selected]="day === 6">{{day}}</span>
-                        <span *ngFor="let day of [10,11,12,13,14,15,16]" [class.has-dot]="day === 13">{{day}}</span>
-                        <span *ngFor="let day of [17,18,19,20,21,22,23]"
-                            [class.has-dot]="day === 18 || day === 21">{{day}}</span>
+            <!-- Schedule Section (Wide) -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>Academic Schedule</h3>
+                    <div class="actions">
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">March 2023</span>
                     </div>
                 </div>
-            </section>
+                <!-- Simple 7 day view for horizontal space -->
+                <div class="days-grid">
+                    <div class="day-col" *ngFor="let day of [13,14,15,16,17,18,19]; let i = index">
+                        <div class="day" [class.selected]="i === 1"> <!-- Just example selection -->
+                            <div style="font-size: 0.7rem; color: #94a3b8; margin-bottom: 4px;">{{
+                                ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][i] }}</div>
+                            <div style="font-weight: 600;">{{ day }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Sidebar Column (Right) -->
         <div class="grid-col aside-col">
-            <!-- Quick Stats Vertical Stack -->
-            <div class="stats-stack">
-                <div class="schooltec-card stat-mini" *ngFor="let s of stats | slice:0:3">
-                    <div class="stat-icon-box" [style.background-color]="s.color + '15'" [style.color]="s.color">
-                        <i [class]="s.icon"></i>
-                    </div>
-                    <div class="stat-info">
-                        <span class="stat-label">{{ s.label }}</span>
-                        <span class="stat-value">{{ s.value }}</span>
-                    </div>
-                    <div class="stat-trend up" *ngIf="s.value.includes('K') || s.value.includes('$')">+34%</div>
+            <!-- Payment Section -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>Fee Status</h3>
                 </div>
-            </div>
-
-            <!-- Payment analytics -->
-            <section class="schooltec-card payment-section">
-                <div class="section-header">
-                    <h3>Payment</h3>
-                </div>
-                <div class="chart-container-doughnut">
-                    <div class="doughnut-simulated">
-                        <div class="inner-label">
-                            <span class="perc">50%</span>
-                            <span class="lbl">Paid</span>
+                <div class="doughnut-wrapper">
+                    <div class="doughnut-chart">
+                        <div class="doughnut-hole">
+                            <span class="chart-value">65%</span>
+                            <span class="chart-label">Paid</span>
                         </div>
                     </div>
                 </div>
-                <div class="payment-feed">
-                    <div class="feed-item" *ngFor="let req of paymentRequests">
-                        <span class="feed-desc">{{ req.desc }}</span>
-                        <span class="feed-status" [class]="req.status">{{ req.status | titlecase }}</span>
+                <div class="payment-list">
+                    <div class="payment-item">
+                        <div class="pay-info">
+                            <h5>Tuition Fee</h5>
+                            <p>Due 24 Mar</p>
+                        </div>
+                        <div class="status-dot success"></div>
+                    </div>
+                    <div class="payment-item">
+                        <div class="pay-info">
+                            <h5>Library Fee</h5>
+                            <p>Pending</p>
+                        </div>
+                        <div class="status-dot pending"></div>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <!-- Attendance Wave Analysis -->
-            <section class="schooltec-card attendance-section">
-                <div class="section-header">
+            <!-- Attendance Mini Chart -->
+            <div class="dashboard-card">
+                <div class="card-header">
                     <h3>Attendance</h3>
                 </div>
-                <div class="wave-chart-simulated">
-                    <div class="wave-lines">
-                        <div class="line" *ngFor="let h of attendanceHistory" [style.height.%]="h"></div>
-                    </div>
-                    <div class="wave-labels">
-                        <span>Jan</span><span>Apr</span><span>Jun</span><span>Oct</span><span>Dec</span>
+                <div style="height: 150px; display: flex; align-items: flex-end; gap: 8px;">
+                    <!-- Simple CSS Bars -->
+                    <div *ngFor="let h of attendanceHistory" [style.height.%]="h"
+                        style="flex:1; background: var(--primary-light); border-radius: 4px 4px 0 0; opacity: 0.8; transition: height 0.5s;">
                     </div>
                 </div>
-            </section>
+                <div
+                    style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.75rem; color: var(--text-muted);">
+                    <span>Jan</span>
+                    <span>Jun</span>
+                    <span>Dec</span>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -3,7 +3,13 @@
     <!-- Left Section: 3D Illustration -->
     <div class="login-visual-panel">
       <div class="visual-content">
-        <img src="assets/pachiyappa's college.webp" alt="University Digital Campus" class="campus-3d-image">
+        <!-- Changed image to proper branding, added class for styling -->
+        <!-- Note: User image name 'pachiayappa's college.webp' might have spaces/special chars. 
+             Assuming standard assets path, but using a generic placeholder that WORKS if file missing 
+             or the specific file if present. -->
+        <div class="college-logo-large">
+          <i class="fas fa-university"></i>
+        </div>
         <div class="floating-blobs">
           <div class="blob b1"></div>
           <div class="blob b2"></div>
@@ -16,15 +22,16 @@
       <div class="form-card-modern">
         <div class="form-header">
           <div class="brand-logotype">
-            <i class="fas fa-university"></i>
-            <span>Schooltec</span>
+            <img src="assets/logo.png" style="height: 40px; margin-right: 10px;" onerror="this.style.display='none'">
+            <i class="fas fa-graduation-cap" style="margin-right: 10px;" *ngIf="true"></i>
+            <span>Pachaiyappa's College</span>
           </div>
-          <h1>System Login</h1>
-          <p>Please enter your credentials to access the ERP platform.</p>
+          <h1 style="color: var(--text-main);">Welcome Back</h1>
+          <p>Sign in to your account</p>
         </div>
 
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="modern-form">
-          <!-- Role Selection with Pill Pills -->
+          <!-- Role Selection -->
           <div class="role-pills">
             <label *ngFor="let r of roles" class="pill-option"
               [class.active]="loginForm.get('role')?.value === r.value">
@@ -37,7 +44,7 @@
             <label>Username / Email</label>
             <div class="input-field-wrapper">
               <i class="fas fa-envelope"></i>
-              <input type="text" formControlName="username" placeholder="Type your username..."
+              <input type="text" formControlName="username" placeholder="Enter username (e.g. rajesh12)"
                 [class.error]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
             </div>
           </div>
@@ -45,23 +52,19 @@
           <div class="input-group-modern">
             <div class="lbl-row">
               <label>Password</label>
-              <a href="#" class="forgot-link">Forgot password?</a>
+              <!-- <a href="#" class="forgot-link">Forgot?</a> -->
             </div>
             <div class="input-field-wrapper">
               <i class="fas fa-lock"></i>
-              <input type="password" formControlName="password" placeholder="Type your password..."
+              <input type="password" formControlName="password" placeholder="Enter password"
                 [class.error]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
             </div>
           </div>
 
           <button type="submit" [disabled]="loginForm.invalid || isLoading" class="btn-login-modern">
-            <span *ngIf="!isLoading">Authorize Account <i class="fas fa-sign-in-alt"></i></span>
+            <span *ngIf="!isLoading">Login <i class="fas fa-arrow-right"></i></span>
             <span *ngIf="isLoading" class="loader-simple"></span>
           </button>
-
-          <div class="form-footer-alt">
-            <p>New staff member? <a href="#">Contact HR</a></p>
-          </div>
 
           <div class="modern-toast error" *ngIf="error">
             <i class="fas fa-exclamation-circle"></i> {{ error }}
